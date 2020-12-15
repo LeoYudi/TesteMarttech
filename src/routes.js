@@ -2,6 +2,8 @@ const express = require('express');
 const ProductController = require('./controllers/ProductController');
 const UserController = require('./controllers/UserController');
 
+const authMiddleware = require('./middlewares/auth');
+
 const routes = express.Router();
 
 routes.get('/', () => {
@@ -9,9 +11,13 @@ routes.get('/', () => {
 });
 
 routes.get('/products', ProductController.getAll);
-routes.post('/product/register', ProductController.store);
+routes.post('/product/register', authMiddleware, ProductController.store);
+routes.put('/product/update', authMiddleware, ProductController.update);
+routes.delete('/product/delete/:id', authMiddleware, ProductController.delete);
 
 routes.post('/login', UserController.login);
 routes.post('/signup', UserController.register);
+routes.put('/user/update', authMiddleware, UserController.update);
+routes.delete('/user/delete/:id', authMiddleware, UserController.delete);
 
 module.exports = routes;
