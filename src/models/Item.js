@@ -9,7 +9,7 @@ class Item extends Model {
     })
   }
   static associate(models) {
-    this.belongsTo(models.Item, { foreignKey: 'cartId', as: 'cart' });
+    this.belongsTo(models.Cart, { foreignKey: 'cartId', as: 'cart' });
     this.belongsTo(models.Products, { foreignKey: 'productId', as: 'product' });
   }
 };

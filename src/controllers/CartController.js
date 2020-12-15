@@ -32,10 +32,10 @@ module.exports = {
     }
   },
 
-  async delete() {
+  async delete(req, res) {
     const { cartId } = req.params;
     try {
-      const cart = await findByPk(cartId);
+      const cart = await Cart.findByPk(cartId);
 
       if (cart.userId !== req.id)
         return res.status(403).json({ msg: 'UNAUTHORIZED' });

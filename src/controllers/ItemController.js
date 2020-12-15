@@ -35,7 +35,7 @@ module.exports = {
       if (!item)
         return res.status(404).json({ msg: 'NOT FOUND' });
 
-      if (item.cart[0].userId !== req.id)
+      if (item.cart.userId !== req.id)
         return res.status(403).json({ msg: 'UNAUTHORIZED' });
 
       await item.update({ productId, amount });
@@ -50,12 +50,12 @@ module.exports = {
     const { itemId } = req.params;
     try {
       const item = await Item.findByPk(itemId, {
-        include: [{ association: 'cart' }],
+        include: { association: 'cart' },
       });
       if (!item)
         return res.status(404).json({ msg: 'NOT FOUND' });
 
-      if (item.cart[0].userId !== req.id)
+      if (item.cart.userId !== req.id)
         return res.status(403).json({ msg: 'UNAUTHORIZED' });
 
       await item.destroy();
