@@ -2,11 +2,12 @@ const Sequelize = require('sequelize');
 
 const dbConfig = require('../config/database.js');
 
-const Products = require('../models/Products');
+const Product = require('../models/Product');
+const User = require('../models/User');
 
 const connection = new Sequelize(dbConfig);
 
-Products.init(connection);
-
+Product.init(connection);
+User.init(connection);
 
 module.exports = connection;

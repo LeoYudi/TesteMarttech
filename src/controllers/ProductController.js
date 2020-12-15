@@ -1,10 +1,10 @@
-const Products = require('../models/Products');
+const Product = require('../models/Product');
 const { hasEmpty } = require('../util/functions');
 
 module.exports = {
   async getAll(req, res) {
     try {
-      const products = await Products.findAll();
+      const products = await Product.findAll();
       return res.status(200).json(products);
     } catch (error) {
       console.log(error);
@@ -17,7 +17,7 @@ module.exports = {
     if (hasEmpty([name, price]))
       return res.status(400).json({ msg: 'MISSING DATA' });
     try {
-      const product = await Products.create({ name, description, price });
+      const product = await Product.create({ name, description, price });
       return res.status(200).json(product);
     } catch (error) {
       console.log(error);
