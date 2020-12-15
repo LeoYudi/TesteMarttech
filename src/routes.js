@@ -1,6 +1,8 @@
 const express = require('express');
 const ProductController = require('./controllers/ProductController');
 const UserController = require('./controllers/UserController');
+const CartController = require('./controllers/CartController');
+// const ItemController = require('./controllers/ItemController');
 
 const authMiddleware = require('./middlewares/auth');
 
@@ -19,5 +21,7 @@ routes.post('/login', UserController.login);
 routes.post('/signup', UserController.register);
 routes.put('/user/update', authMiddleware, UserController.update);
 routes.delete('/user/delete/:id', authMiddleware, UserController.delete);
+
+routes.get('/cart/:cartId', authMiddleware, CartController.getCart);
 
 module.exports = routes;

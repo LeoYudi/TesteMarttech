@@ -11,6 +11,7 @@ class Products extends Model {
     })
   }
   static associate(models) {
+    this.hasMany(models.Item, { foreignKey: 'productId', as: 'items' });
   }
 };
 
