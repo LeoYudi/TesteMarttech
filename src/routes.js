@@ -11,6 +11,7 @@ routes.get('/', () => {
 routes.get('/products', ProductController.getAll);
 routes.post('/product/register', ProductController.store);
 
+routes.post('/login', UserController.login);
 routes.post('/signup', UserController.register);
 
 module.exports = routes;

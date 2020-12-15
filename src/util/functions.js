@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const token = require('../config/token');
 
 module.exports = {
   hasEmpty: (array) => {
@@ -14,7 +15,7 @@ module.exports = {
 
   validPassword: (password, hash) => bcrypt.compareSync(password, hash),
 
-  generateToken: (params = {}) => jwt.sign(params, authConfig.secret, {
+  generateToken: (params = {}) => jwt.sign(params, token.secret, {
     expiresIn: 86400, //um dia
   }),
 }
