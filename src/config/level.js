@@ -1,4 +1,4 @@
 module.exports = {
-  ADMIN: 'a',
-  NORMAL: 'n'
+  ADMIN: 0,
+  NORMAL: 1
 }

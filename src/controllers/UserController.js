@@ -37,7 +37,8 @@ module.exports = {
       return res.status(200).json({ user, token: generateToken({ id: user.id, level: user.level }) })
 
     } catch (error) {
-
+      console.log(error);
+      return res.status(500).json({ msg: 'INTERNAL SERVER ERROR' });
     }
   }
 };
